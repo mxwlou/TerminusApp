@@ -1,24 +1,247 @@
-html,
-body {
+.ud-perspective,
+.ud-perspective body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.ud-perspective body  {
+  background: #222;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  perspective: 600px;
+}
+
+/*.container {
+  background: #e74c3c;
+  min-height: 100%;
+}*/
+
+.ud-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  max-width: 630px;
+  min-width: 320px;
+  height: auto;
+  z-index: 2000;
+  visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.ud-show {
+  visibility: visible;
+}
+
+.ud-overlay {
+  position: fixed;
   width: 100%;
   height: 100%;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  /*background: rgba(143,27,15,0.8);*/
+  background: rgba(15,2,15,0.8);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.ud-show ~ .ud-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Content styles */
+.ud-content {
+  color: #fff;
+  /*background: #e74c3c;*/
+  background: #69b0ac;
+  position: relative;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+
+.ud-content h3 {
   margin: 0;
-  padding: 0;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-  color: #525252;
-}
-
-a {
-  text-decoration: none;
-  color: #cb3837;
-}
-
-.container {
+  padding: 0.4em;
   text-align: center;
+  font-size: 1.5em;
+  font-weight: 300;
+  opacity: 0.8;
+  background: rgba(0,0,0,0.1);
+  border-radius: 3px 3px 0 0;
+}
+
+.ud-content > div {
+  padding: 15px 40px 30px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.15em;
+}
+
+.ud-content > div p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.ud-content > div ul {
+  margin: 0;
+  padding: 0 0 30px 20px;
+}
+
+.ud-content > div ul li {
+  padding: 5px 0;
+  line-height: 1!important;
+}
+
+.ud-content > div ul li:before {
+  position: relative!important;
+  line-height: 0.5!important;
+}
+
+.ud-content button {
+  /*display: block;
+  margin: 0 auto;
+  font-size: 0.8em;*/
+  display: block;
+  margin: 0 auto;
+  margin-top: 1em;
+  height: 2em;
+  width: 10em;
+  border: none;
+  cursor: pointer;
+  background: #000;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.ud-content button.emphasise {
+  background: #e03c8a;
+}
+.ud-content select {
+  border: none;
+    line-height: 2em;
+    height: 2rem;
+    width: 5rem;
+    font-weight: bold;
+    font-size: large;
+    font-family: inherit;
+    vertical-align: middle;
+}
+.ud-content select:focus {
+  outline: none;
+}
+
+.ud-content input {
+  font-size: 100%;
+  width: 8rem;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  opacity: 0.6;
+  -webkit-transition: all .3s ease-in-out;
+     -moz-transition: all .3s ease-in-out;
+      -ms-transition: all .3s ease-in-out;
+       -o-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
+}
+
+button:focus {
+  outline:none;
+}
+
+button.call-update {
+    border: none;
+    position: fixed;
+    right: 0;
+    top: 30vh;
+    cursor: pointer;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: #2ea9df;
+    color: #fff;
+    font-weight: bolder;
+}
+
+button.nav-btn, button#setting-btn {
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  font-size: 1em;
+  /*background: #000;*/
+  background: none;
+  cursor: pointer;
+  background-size: cover;
+  color: white!important;
+}
+
+button#nav-back {
+      left: 0;
+    bottom: 0;
+    background-image: url("https://png.icons8.com/flat_round/50/000000/circled-left-2.png");
+}
+button#nav-forward {
+    left: 3.5rem;
+    bottom: 0;
+    background-image: url("https://png.icons8.com/flat_round/50/000000/right.png");
+}
+button#setting-btn {
+    bottom: 0;
+    right: 0;
+    background-image: url("https://png.icons8.com/color/50/000000/settings.png");
+}
+
+/* Individual modal styles with animations/transitions */
+
+/* Effect 1: Fade in and scale up */
+
+
+/* Effect 14:  3D Rotate from bottom */
+.ud-effect-14.ud-modal {
+  -webkit-perspective: 1300px;
+  -moz-perspective: 1300px;
+  perspective: 1300px;
+}
+
+.ud-effect-14 .ud-content {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: translateY(100%) rotateX(90deg);
+  -moz-transform: translateY(100%) rotateX(90deg);
+  -ms-transform: translateY(100%) rotateX(90deg);
+  transform: translateY(100%) rotateX(90deg);
+  -webkit-transform-origin: 0 100%;
+  -moz-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.ud-show.ud-effect-14 .ud-content {
+  -webkit-transform: translateY(0%) rotateX(0deg);
+  -moz-transform: translateY(0%) rotateX(0deg);
+  -ms-transform: translateY(0%) rotateX(0deg);
+  transform: translateY(0%) rotateX(0deg);
+  opacity: 1;
+}
+
+@media screen and (max-width: 32em) {
+  body { font-size: 75%; }
 }

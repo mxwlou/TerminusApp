@@ -1,0 +1,143 @@
+{
+  "name": "proj.terminus.sitever",
+  "version": "0.1.0",
+  "description": "Terminus project site versioning control",
+  "main": "index.js",
+  "manifest": [
+    {
+      "version": "0.0.1",
+      "file": [
+        "static-0.0.1.zip"
+      ],
+      "detail": [
+        "第一个版本"
+      ]
+    },
+    {
+      "version": "0.0.2",
+      "file": [
+        "static-0.0.2.zip"
+      ],
+      "detail": [
+        "20180506更新",
+        "钱理群2008讲座"
+      ]
+    },
+    {
+      "version": "0.0.3",
+      "file": [
+        "static-0.0.3.zip"
+      ],
+      "detail": [
+        "20180508更新",
+        "性别平等倡导者：我们被约与被谈 _ 新媒体女性",
+        "贾灵敏出狱",
+        "也夫谈",
+        "好奇心日报-北大120"
+      ]
+    },
+    {
+      "version": "0.0.4",
+      "file": [
+        "static-0.0.4.zip"
+      ],
+      "detail": [
+        "20180513更新",
+        "在北大，我与文安公司的那些事",
+        "新闻实验室",
+        "北大访谈校工被约谈",
+        "《九年》",
+        "2018年北大校工访谈全记录"
+      ]
+    },
+    {
+      "version": "0.0.5",
+      "file": [
+        "static-0.0.5.zip"
+      ],
+      "detail": [
+        "20180514更新",
+        "拒绝对彩虹的暴力：同志组织关于798事件的谴责信",
+        "从“彩虹徽章”事件看性少数如何避免暴力冲突"
+      ]
+    },
+    {
+      "version": "0.0.6",
+      "file": [
+        "static-0.0.6.zip"
+      ],
+      "detail": [
+        "20180520更新",
+        "尘肺 Rap"
+      ]
+    },
+    {
+      "version": "0.0.7",
+      "file": [
+        "static-0.0.7.zip"
+      ],
+      "detail": [
+        "20180522更新",
+        "北大后勤学生投诉情况调查",
+        "亲爱的中大，请问性骚扰案解决了吗？",
+        "湖南尘肺工人：贡献青春，却被抛弃；理性维权，反遭打压！",
+        "重磅消息！富士康工人声援尘肺病工人维权！"
+      ]
+    },
+    {
+      "version": "0.0.8",
+      "file": [
+        "static-0.0.8.zip"
+      ],
+      "detail": [
+        "20180523更新",
+        "删海经",
+        "周保松评论"
+      ]
+    },
+    {
+      "version": "0.0.9",
+      "file": [
+        "static-0.0.9.zip"
+      ],
+      "detail": [
+        "20180525更新",
+        "鸿茅药酒事件"
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "file": [
+        "static-0.1.0.zip"
+      ],
+      "detail": [
+        "20180526更新",
+        "民办小学被拆除",
+        "逃离美发厅",
+        "张康之"
+      ]
+    }
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mxwlou/sitever.git"
+  },
+  "keywords": [
+    "site",
+    "versioning",
+    "control"
+  ],
+  "author": "Terminus Bot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mxwlou/sitever/issues"
+  },
+  "homepage": "https://github.com/mxwlou/sitever#readme",
+  "dependencies": {
+    "compressing": "^1.2.3"
+  }
+}

@@ -52,9 +52,16 @@ app.on("ready", () => {
     height: 600
   });
 
+  // mainWindow.loadURL(
+  //   url.format({
+  //     pathname: path.join(__dirname, 'static' ,"index.html"),
+  //     protocol: "file:",
+  //     slashes: true
+  //   })
+  // );
   mainWindow.loadURL(
     url.format({
-      pathname: path.join(__dirname, 'static' ,"index.html"),
+      pathname: path.join(__dirname, "static" ,"index.html"),
       protocol: "file:",
       slashes: true
     })
@@ -115,13 +122,24 @@ app.on("ready", () => {
   // console.log(filter.urls);
   session.defaultSession.webRequest.onBeforeRequest(filter , (details, callback) => {
     // console.log("Captured! This is: " , details);
+    let loadUrl = '';
+    // if (details.url.indexOf('social-share.min.js') !== -1) {
+    //   loadUrl = 
+    //   callback({cancel: false, redirectUrl: path.join('file://', __dirname, 'app.js')});
+    // } else 
     if (details.url.startsWith('file:///static/')) {
-      callback({cancel: false, redirectURL: details.url.replace('/static/', path.join(__dirname, 'static') + '/')});    
+      loadUrl = details.url.replace('/static/', path.join(__dirname, 'static') + '/');    
     } else if (details.url.startsWith('file:///C:/static/')) {
-      callback({cancel: false, redirectURL: details.url.replace('C:/static/', path.join(__dirname, 'static') + '/')});
+      loadUrl = details.url.replace('C:/static/', path.join(__dirname, 'static') + '/');
     } else {
-      callback({cancel: false, redirectURL: details.url.replace('c:/static/', path.join(__dirname, 'static') + '/')});
+      loadUrl = details.url.replace('c:/static/', path.join(__dirname, 'static') + '/');
     }
+
+    if (details.url.indexOf('social-share.min.js') !== -1) {
+      loadUrl = loadUrl.replace('static/assets/js/social-share.min.js', 'app.js');
+    }
+    // console.log("loading: " , loadUrl);
+    callback({cancel: false, redirectURL: loadUrl});
     // callback({cancel: false, redirectURL: details.url.replace('/static/', path.join(__dirname, 'static') + '/')});
   });
 
@@ -214,6 +232,9 @@ app.on("ready", () => {
         }
     }
 
+    // mainWindow.webContents.executeJavaScript('')
+    // Execute Custom File
+    // mainWindow.webContents.executeJavaScript('import {remote} from "electron";import jetpack from "fs-jetpack"; var appManifest = appDir.read("package.json", "json");var thisApp = remote.app;var appDir = jetpack.cwd(app.getAppPath());console.log("I\'m Executed!!");console.log("My AppDir is: ", appDir);console.log("My Manifest is: ", appManifest);', (res) => console.log('Execution Success!!!'));
     // staticFiles.forEach(e => mainWindow.loadURL(
     //     url.format({
     //       pathname: path.join(__dirname, 'static', e),
