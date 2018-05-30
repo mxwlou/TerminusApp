@@ -11,7 +11,8 @@
 ## 最新版本安装包
 * **Windows** : [TimeMachine-Windows-X64-Setup](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/win.zip)
 * **macOS**: [TimeMachine-macOS-X64-DMG](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/mac.zip)
-* **Linux**: [TimeMachine-Linux-X64-AppImage](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/linux.zip)
+* **Linux**: [TimeMachine-Linux-X64-AppImage](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/linux-appimage.zip)、[TimeMachine-Linux-X64-deb](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/linux-deb.zip)、
+[TimeMachine-Linux-X64-tar.xz](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/linux-tar.xz.zip)
 
 
 
