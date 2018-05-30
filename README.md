@@ -1,102 +1,69 @@
-# electron-boilerplate
+# ![TerminusApp](https://user-images.githubusercontent.com/14846040/40700034-4f1aebca-640a-11e8-81ed-830c3e842645.png) 
+# 时光机 - An App For Terminus
 
-A minimalistic boilerplate for [Electron runtime](http://electron.atom.io). Tested on Windows, macOS and Linux.  
+「时光机」是端点星计划 [Terminus](https://github.com/terminus2049) 的一款桌面App，使用[Electron](http://electronjs.org)开发，打包工具为[Electron Buillder](http://electron.build/)。目前支持Windows、Mac以及Linux。
 
-This project contains only bare minimum of dependencies, to provide you with nice development environment. Doesn't impose on you any frontend technologies, so you can pick your favourite.
+## 特性
+* **文件离线**。无需担心被某墙限制访问。
+* **自动更新**。自动检查更新与完成自动更新。出现问题可回退（目前版本暂不支持回退）。
+* **可设置不同更新源**。 保证数据版本的去中心化。使用版本管理仓库 [SiteVersion](https://github.com/mxwlou/sitever) 管理记录，任何Fork Repo都能与此App的自动更新兼容。同时支持第三方hosting更新（需要第三方静态site支持**https**协议，同时保证与版本管理仓库相同的文件结构）.
 
-# Quick start
+## 最新版本安装包
+* **Windows** : [TimeMachine-Windows-X64-Setup](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/win.zip)
+* **macOS**: [TimeMachine-macOS-X64-DMG](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/mac.zip)
+* **Linux**: [TimeMachine-Linux-X64-AppImage](https://raw.githubusercontent.com/mxwlou/TerminusApp/master/dist/linux.zip)
 
-Make sure you have [Node.js](https://nodejs.org) installed, then type the following commands known to every Node developer...
-```
-git clone https://github.com/szwacz/electron-boilerplate.git
-cd electron-boilerplate
-npm install
-npm start
-```
-...and you have a running desktop application on your screen.
 
-# Structure of the project
 
-The application consists of two main folders...
+# 开发者指南
 
-`src` - files within this folder get transpiled or compiled (because Electron can't use them directly).
+## 文件结构
 
-`app` - contains all static assets which don't need any pre-processing. Put here images, CSSes, HTMLs, etc.
+* `src` - 这个文件夹下面的文件会被编译后放进 `app` 文件夹后打包.
+* `app` - 放置静态资源的地方，此文件夹下的内容会被完全打包.
+*   * `static`: 放置Terminus打包出来的静态资源页面。
+*   * `static-old`: 自动创建，用于版本回退。
+*   * `tmp`: 自动创建，下载文件的临时存放位置。
+*   * `ver.json`: 内容版本控制文件。
+*   * `conf.json`: 更新仓库和地址的设定文件，自动生成。
+* `build` - 构建脚本
+* `config` - 配置文件
+* `resources` - 放置App的图标。
+* `e2e` - 放置测试文件。
+* `package.json` - 里面的`build`选项为提供给**Electron Builder**的配置参数。
 
-The build process compiles the content of the `src` folder and puts it into the `app` folder, so after the build has finished, your `app` folder contains the full, runnable application.
+## 开发步骤
 
-Treat `src` and `app` folders like two halves of one bigger thing.
-
-The drawback of this design is that `app` folder contains some files which should be git-ignored and some which shouldn't (see `.gitignore` file). But this two-folders split makes development builds much, much faster.
-
-# Development
-
-## Starting the app
-
-```
-npm start
-```
-
-## The build pipeline
-
-Build process uses [Webpack](https://webpack.js.org/). The entry-points are `src/background.js` and `src/app.js`. Webpack will follow all `import` statements starting from those files and compile code of the whole dependency tree into one `.js` file for each entry point.
-
-[Babel](http://babeljs.io/) is also utilised, but mainly for its great error messages. Electron under the hood runs latest Chromium, hence most of the new JavaScript features are already natively supported.
-
-## Environments
-
-Environmental variables are done in a bit different way (not via `process.env`). Env files are plain JSONs in `config` directory, and build process dynamically links one of them as an `env` module. You can import it wherever in code you need access to the environment.
-```js
-import env from "env";
-console.log(env.name);
+### 安装依赖项并启动本地Electron程序
+```shell
+# 克隆项目
+git clone https://github.com/mxwlou/TerminusApp
+cd TerminusApp
+# 使用Yarn进行包管理
+# 没有安装yarn请 npm install -g yarn
+yarn
+# 启动项目
+yarn start
 ```
 
-## Upgrading Electron version
-
-To do so edit `package.json`:
-```json
-"devDependencies": {
-  "electron": "1.7.9"
-}
+### 测试
 ```
-*Side note:* [Electron authors recommend](http://electron.atom.io/docs/tutorial/electron-versioning/) to use fixed version here.
-
-## Adding npm modules to your app
-
-Remember to respect the split between `dependencies` and `devDependencies` in `package.json` file. Your distributable app will contain modules listed in `dependencies` after running the release script.
-
-*Side note:* If the module you want to use in your app is a native one (not pure JavaScript but compiled binary) you should first  run `npm install name_of_npm_module` and then `npm run postinstall` to rebuild the module for Electron. You need to do this once after you're first time installing the module. Later on, the postinstall script will fire automatically with every `npm install`.
-
-# Testing
-
-Run all tests:
-```
-npm test
+yarn run test
 ```
 
-## Unit
-
+### 编译当前机器运行版本的安装包(Linux/Mac/Windows)
 ```
-npm run unit
-```
-Using [electron-mocha](https://github.com/jprichardson/electron-mocha) test runner with the [Chai](http://chaijs.com/api/assert/) assertion library. You can put your spec files wherever you want within the `src` directory, just name them with the `.spec.js` extension.
-
-## End to end
-
-```
-npm run e2e
-```
-Using [Mocha](https://mochajs.org/) and [Spectron](http://electron.atom.io/spectron/). This task will run all files in `e2e` directory with `.e2e.js` extension.
-
-# Making a release
-
-To package your app into an installer use command:
-```
-npm run release
+yarn run release
 ```
 
-Once the packaging process finished, the `dist` directory will contain your distributable file.
+### 在Mac下或者在Linux下生成Windows的安装包
+```
+yarn run build:win
+```
 
-We use [electron-builder](https://github.com/electron-userland/electron-builder) to handle the packaging process. It has a lot of [customization options](https://www.electron.build/configuration/configuration), which you can declare under `"build"` key in `package.json`.
+### 生成三个平台下的安装包（Warining：非常耗时）
+```
+yarn run build
+```
 
-You can package your app cross-platform from a single operating system, [electron-builder kind of supports this](https://www.electron.build/multi-platform-build), but there are limitations and asterisks. That's why this boilerplate doesn't do that by default.
+
