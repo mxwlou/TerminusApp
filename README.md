@@ -1,4 +1,4 @@
-# ![TerminusApp](https://user-images.githubusercontent.com/14846040/40700034-4f1aebca-640a-11e8-81ed-830c3e842645.png) 
+![TerminusApp](https://user-images.githubusercontent.com/14846040/40700034-4f1aebca-640a-11e8-81ed-830c3e842645.png) 
 # 时光机 - An App For Terminus
 
 「时光机」是端点星计划 [Terminus](https://github.com/terminus2049) 的一款桌面App，使用[Electron](http://electronjs.org)开发，打包工具为[Electron Buillder](http://electron.build/)。目前支持Windows、Mac以及Linux。
